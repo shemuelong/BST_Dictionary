@@ -2,24 +2,7 @@
 #include <ctime>
 #include <random>
 
-int random(int a[], int size){
-    for(int i = 0; i <= size; i ++){
-        std::cout << a[i] << ", ";
-    }
-    std::cout << std::endl;
-
-    std::random_device rd;
-    std::mt19937 mt(rd());
-    std::uniform_int_distribution<> dist(0, size);
-    int y = dist(mt);
-    std::cout << "y: " << y << std::endl;
-    int temp = a[size];
-    a[size] = a[y-1];
-    a[y-1] = temp;
-    return a[size];
-
-
-}
+int random(int a[], int size);
 
 int main() {
 
@@ -52,4 +35,21 @@ int main() {
     a.clear();
 
     return 0;
+}
+
+int random(int a[], int size){
+    for(int i = 0; i <= size; i ++){
+        std::cout << a[i] << ", ";
+    }
+    std::cout << std::endl;
+
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_int_distribution<> dist(0, size);
+    int y = dist(mt);
+    std::cout << "y: " << y << std::endl;
+    int temp = a[size];
+    a[size] = a[y-1];
+    a[y-1] = temp;
+    return a[size];
 }
